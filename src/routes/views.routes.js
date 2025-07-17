@@ -3,6 +3,8 @@ const viewsController = require('../controllers/ViewsController');
 
 const router = Router();
 
+router.get("/page-not-found", viewsController.renderPageNotFound);
+router.get("/acceso-denegado", viewsController.renderAccessDenied);
 router.get("/", viewsController.renderHome);
 router.get('/login', viewsController.renderIndex);
 router.get("/perfil-usuario", viewsController.renderProfileUser);

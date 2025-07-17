@@ -2,6 +2,7 @@ const TicketRepository = require("../repositories/TicketRepository");
 const CartRepository = require("../repositories/CartRepository");
 const { ticketNumberRandom } = require("../utils/cart.util");
 const { logger } = require("../middlewares/logger.middleware");
+const mailer = require("../services/mailer/nodemailer.service");
 
 class TicketController {
     async finishPurchase(req, res) {
@@ -37,6 +38,7 @@ class TicketController {
             const ticket = await TicketRepository.createTicket(ticketData);
             await TicketRepository.addTicketToUser(user._id, ticket._id);
             await CartRepository.emptyCart(cartId);
+            await mailer.SendPurchaseConfirmation(user.email, ticketData);
             res.status(201).json({ _id: ticket._id });
         } catch (error) {
             logger.error(error.message);

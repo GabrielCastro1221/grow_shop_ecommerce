@@ -81,6 +81,24 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
+    
+    renderPageNotFound(req, res) {
+        try {
+            res.render('pageNotFound');
+        } catch (error) {
+            logger.error(`Error occurred while rendering pageNotFound view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+    renderAccessDenied(req, res) {
+        try {
+            res.render('accessDenied');
+        } catch (error) {
+            logger.error(`Error occurred while rendering accessDenied view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
 }
 
 module.exports = new ViewsController();
