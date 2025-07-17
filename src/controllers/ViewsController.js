@@ -81,7 +81,7 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
-    
+
     renderPageNotFound(req, res) {
         try {
             res.render('pageNotFound');
@@ -96,6 +96,33 @@ class ViewsController {
             res.render('accessDenied');
         } catch (error) {
             logger.error(`Error occurred while rendering accessDenied view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+    renderBlog(req, res) {
+        try {
+            res.render('blog');
+        } catch (error) {
+            logger.error(`Error occurred while rendering blog view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+    renderAbout(req, res) {
+        try {
+            res.render('about');
+        } catch (error) {
+            logger.error(`Error occurred while rendering about view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+    renderContact(req, res) {
+        try {
+            res.render('contact');
+        } catch (error) {
+            logger.error(`Error occurred while rendering contact view: ${error.message}`);
             res.status(500).send('Internal Server Error');
         }
     }
