@@ -7,6 +7,7 @@ const uploadFileRouter = require("../routes/uploadFile.routes");
 const productRouter = require("../routes/product.routes");
 const cartRouter = require("../routes/cart.routes");
 const wishlistRouter = require("../routes/wishlist.routes");
+const ticketRouter = require("../routes/ticket.routes");
 
 const specs = swaggerJsDoc(swaggerOptions);
 
@@ -17,6 +18,7 @@ const setupRoutes = (app) => {
     app.use("/api/v1/products", productRouter);
     app.use("/api/v1/carts", cartRouter);
     app.use("/api/v1/wishlists", wishlistRouter);
+    app.use("/api/v1/tickets", ticketRouter);
 
     app.use("/api-docs",
         swaggerUiExpress.serve,
