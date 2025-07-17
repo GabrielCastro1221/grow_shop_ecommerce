@@ -111,6 +111,18 @@ class UserRepository {
             throw new Error(error.message);
         }
     }
+
+    async getUserProfile(id) {
+        try {
+            const user = await userModel.findById(id);
+            if (!user) {
+                throw new Error("Usuario no encontrado");
+            }
+            return user;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }
 
 module.exports = new UserRepository();

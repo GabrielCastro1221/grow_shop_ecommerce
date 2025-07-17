@@ -82,6 +82,24 @@ class UserController {
             res.status(500).json({ message: "Error del servidor." });
         }
     }
+
+    async getUserProfile(req, res) {
+        const userId = req.user._id;
+        try {
+            const user = await UserRepository.getUserProfile(userId);
+            const { password, ...rest } = user._doc;
+            res.status(200).json({
+                success: true,
+                message: "Información del perfil obtenida exitosamente",
+                data: { ...rest },
+            });
+        } catch (error) {
+            res.status(500).json({
+                error: error.message,
+                message: "Error al obtener la información del perfil",
+            });
+        }
+    }
 }
 
 module.exports = new UserController();
