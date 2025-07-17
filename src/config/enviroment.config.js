@@ -24,6 +24,12 @@ const configObject = {
         api_secret: process.env.API_SECRET,
         cloud_name: process.env.CLOUD_NAME,
     },
+    mailer: {
+        mailer_user: process.env.MAILER_USER,
+        mailer_pass: process.env.MAILER_PASS,
+        email_from: process.env.EMAIL_FROM,
+        email_service: process.env.EMAIL_SERVICE,
+    },
 };
 
 module.exports = configObject;
