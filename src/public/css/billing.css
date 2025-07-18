@@ -1,0 +1,132 @@
+.checkout__container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.checkout__group:nth-child(2) {
+    border: 1px solid hsl(0, 0%, 84%);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.checkout__group .section__title {
+    font-size: 1.125rem;
+}
+
+
+.order__img {
+    width: 80px;
+}
+
+.checkout__title {
+    font-size: 0.875rem;
+}
+
+.order__table tr th,
+.order__table tr td {
+    border: 1px solid hsl(0, 0%, 84%);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.order__table tr th {
+    color: #088178;
+    font-size: 0.875rem;
+}
+
+.table__quantity,
+.order__subtitle {
+    font-size: 0.875rem;
+}
+
+.table__title {
+    color: #088178;
+}
+
+.order__grand-total {
+    color: #088178;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.payment__methods {
+    margin-block: 1.5rem;
+}
+
+.payment__title {
+    margin-bottom: 1.5rem;
+}
+
+.payment__options {
+    margin-bottom: 1rem;
+}
+
+.payment__input {
+    accent-color: #088178;
+}
+
+.payment__label {
+    font-size: 0.875rem;
+}
+
+.order-details .form {
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.order-details label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.order-details .form__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.order-details .form__input:focus {
+    border-color: #088178;
+    outline: none;
+}
+
+.order-details .form__input[readonly] {
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .order-details .form {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .checkout__group:nth-child(2) {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .checkout__container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .checkout__group:nth-child(2) {
+        padding: 1.25rem;
+    }
+
+    .payment__methods {
+        margin-block: 2.25rem 2.5rem;
+    }
+}
