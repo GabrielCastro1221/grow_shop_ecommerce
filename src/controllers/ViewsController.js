@@ -126,6 +126,15 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
+    
+    renderEmailConfirm(req, res) {
+        try {
+            res.render('emailConfirm');
+        } catch (error) {
+            logger.error(`Error occurred while rendering email confirm view: ${error.message}`);
+            res.status(500).send('Internal Server Error');
+        }
+    }
 }
 
 module.exports = new ViewsController();

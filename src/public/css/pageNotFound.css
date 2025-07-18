@@ -1,0 +1,22 @@
+.title-404 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: hsl(0, 61%, 21%);
+}
+
+.desc-404 {
+    font-size: 1rem;
+    color: hsl(0, 8%, 16%);
+    margin-bottom: 20px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #088178;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}

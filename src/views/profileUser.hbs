@@ -1,1 +1,131 @@
-<h1>profileUser</h1>
+<link rel="stylesheet" href="/css/profiles.css">
+
+<section class="accounts section--lg">
+    <div class="accounts__container container grid">
+        <div class="account__tabs">
+            <p class="account__tab active__tab" data-target="#dashboard">
+                <i class="fi fi-rr-settings-sliders"></i> DashBoard
+            </p>
+
+            <p class="account__tab active__tab" data-target="#orders">
+                <i class="fi fi-rr-shopping-bag"></i> Ordenes de compra
+            </p>
+
+            <p class="account__tab active__tab" data-target="#update-profile">
+                <i class="fi fi-rr-user"></i> Actualizar perfil
+            </p>
+
+            <p class="account__tab active__tab" data-target="#address">
+                <i class="fi fi-rr-marker"></i> Mis Datos
+            </p>
+
+            <p class="account__tab active__tab delete-button">
+                <i class="fi fi-rr-trash"></i> Eliminar cuenta
+            </p>
+
+            <p class="account__tab active__tab logout-button">
+                <i class="fi fi-rr-exit"></i> Salir
+            </p>
+        </div>
+        <div class="tabs__content">
+            <div class="tab__content active-tab" content id="dashboard">
+                <h3 class="tab__header">DashBoard</h3>
+                <div class="tab__body">
+                    <p id="dashboard-description" class="tab__description">
+                        Desde el panel de control de tu cuenta. Puede verificar y ver fácilmente tus pedidos recientes,
+                        administrar sus direcciones de envío y facturación y editar su contraseña y detalles de la
+                        cuenta.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tab__content" content id="orders">
+                <h3 class="tab__header">Tus ordenes</h3>
+                <div class="tab__body">
+                    <table class="placed__order-table">
+                        <tr></tr>
+                    </table>
+
+                    <div id="modal-order-user" class="modal-order-user">
+                        <div class="modal-content-order-user">
+                            <span class="close-order-user">&times;</span>
+                            <h3>Selecciona una opción:</h3>
+                            <div class="buttons-container">
+                                <button class="cancel__order-btn"><i class="fi fi-rr-cross-circle"></i> Cancelar
+                                    orden</button>
+                                <button class="delete__order-btn"><i class="fi fi-rr-trash"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__content" content id="update-profile">
+                <h3 class="tab__header">Actualizar perfil</h3>
+                <div class="tab__body">
+                    <form id="update-form" class="form grid">
+                        <input type="text" name="name" id="name-update" class="form__input" placeholder="Nombre">
+                        <input type="text" name="last_name" id="last-name-update" class="form__input"
+                            placeholder="Apellido">
+                        <input type="email" name="email" id="email-update" class="form__input"
+                            placeholder="Correo electrónico">
+                        <input type="text" name="age" id="age-update" class="form__input" placeholder="Edad">
+                        <div class="form flex-between">
+                            <label class="label">
+                                Eres un:
+                                <select name="role" id="role-update" class="select-field">
+                                    <option value="usuario">Usuario</option>
+                                </select>
+                            </label>
+                            <label class="label">
+                                Género:
+                                <select name="gender" id="gender-update" class="select-field">
+                                    <option value="">Seleccionar</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="label select-city">
+                            <select class="select-field" name="city" id="city-update">
+                                <option value="" disabled selected>Selecciona tu ciudad</option>
+                                <option value="bogota">Bogotá</option>
+                                <option value="medellin">Medellín</option>
+                                <option value="cali">Cali</option>
+                                <option value="barranquilla">Barranquilla</option>
+                                <option value="cartagena">Cartagena</option>
+                                <option value="manizales">Manizales</option>
+                                <option value="pereira">Pereira</option>
+                                <option value="bucaramanga">Bucaramanga</option>
+                                <option value="santa-marta">Santa Marta</option>
+                                <option value="villavicencio">Villavicencio</option>
+                                <option value="ibague">Ibagué</option>
+                                <option value="neiva">Neiva</option>
+                                <option value="popayan">Popayán</option>
+                                <option value="sincelejo">Sincelejo</option>
+                                <option value="riohacha">Riohacha</option>
+                                <option value="valledupar">Valledupar</option>
+                                <option value="monteria">Montería</option>
+                            </select>
+                        </div>
+                        <input type="text" name="phone" id="phone-update" class="form__input" placeholder="Teléfono">
+                        <input type="text" name="address" id="address-update" class="form__input"
+                            placeholder="Dirección">
+                        <div class="form__btn">
+                            <button type="submit" class="btn btn--md" id="updaet-user">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab__content" content id="address">
+                <h3 class="tab__header">Mis Datos</h3>
+                <div class="tab__body">
+                    <div class="address"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/profileUser.js"></script>

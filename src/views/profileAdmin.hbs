@@ -1,1 +1,336 @@
-<h1>profileAdmin</h1>
+<link rel="stylesheet" href="/css/profiles.css">
+
+<section class="accounts section--lg">
+    <div class="accounts__container container grid">
+        <div class="account__tabs">
+            <p class="account__tab active__tab" data-target="#dashboard">
+                <i class="fi fi-rr-settings-sliders"></i> DashBoard
+            </p>
+
+            <p class="account__tab active__tab" data-target="#users">
+                <i class="fi fi-rr-shopping-bag"></i> Usuarios
+            </p>
+
+            <p class="account__tab active__tab" data-target="#products">
+                <i class="fi fi-rr-user"></i> Productos
+            </p>
+
+            <p class="account__tab active__tab" data-target="#tickets">
+                <i class="fi fi-rr-marker"></i> Tickets
+            </p>
+
+            <p class="account__tab active__tab" data-target="#address" style="display: none;">
+                <i class="fi fi-rr-marker"></i> Mis Datos
+            </p>
+
+            <p class="account__tab active__tab logout-button">
+                <i class="fi fi-rr-exit"></i> Salir
+            </p>
+        </div>
+
+        <div class="tabs__content">
+            <div class="tab__content active-tab" id="dashboard" role="tabpanel" aria-labelledby="dashboard-name">
+                <h3 class="tab__header" id="dashboard-name">Panel de administración</h3>
+                <div class="tab__body">
+                    <p class="tab__description">
+                        Desde el panel de control de administrador, puedes visualizar y gestionar todos los datos
+                        registrados en la base de datos de la tienda en línea. Administra los productos, usuarios y
+                        compras de manera eficiente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tab__content" content id="users">
+                <h3 class="tab__header title__tab">Usuarios <a href="" class="btn btn--sm" id="create-user">Crear
+                        Usuario</a></h3>
+
+                <div id="modal-create-user" class="modal__create-user">
+                    <div class="modal__create-content">
+                        <span class="close-create-user">&times;</span>
+                        <div class="register">
+                            <form class="form grid" id="register-form">
+                                <input type="text" placeholder="Ingresa el nombre" id="name" name="name"
+                                    class="form__input">
+                                <input type="text" placeholder="Ingresa el apellido" id="last_name" name="last_name"
+                                    class="form__input">
+                                <input type="email" placeholder="Ingresa el Email" id="email" name="email"
+                                    class="form__input email">
+                                <input type="password" placeholder="Ingresa la Contraseña" id="password" name="password"
+                                    class="form__input pass" autocomplete="off">
+                                <input type="number" placeholder="Ingresa la edad" id="age" name="age"
+                                    class="form__input">
+                                <div class="form flex-between">
+                                    <label class="label">
+                                        Rol:
+                                        <select name="role" class="select-field">
+                                            <option value="usuario">Usuario</option>
+                                            <option value="admin">Administrador</option>
+                                        </select>
+                                    </label>
+                                    <label class="label">
+                                        Género:
+                                        <select name="gender" class="select-field">
+                                            <option value="">Seleccionar</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="label select-city">
+                                    <select class="select-field" name="city" id="city">
+                                        <option value="" disabled selected>Selecciona tu ciudad</option>
+                                        <option value="bogota">Bogotá</option>
+                                        <option value="medellin">Medellín</option>
+                                        <option value="cali">Cali</option>
+                                        <option value="barranquilla">Barranquilla</option>
+                                        <option value="cartagena">Cartagena</option>
+                                        <option value="manizales">Manizales</option>
+                                        <option value="pereira">Pereira</option>
+                                        <option value="bucaramanga">Bucaramanga</option>
+                                        <option value="santa-marta">Santa Marta</option>
+                                        <option value="villavicencio">Villavicencio</option>
+                                        <option value="ibague">Ibagué</option>
+                                        <option value="neiva">Neiva</option>
+                                        <option value="popayan">Popayán</option>
+                                        <option value="sincelejo">Sincelejo</option>
+                                        <option value="riohacha">Riohacha</option>
+                                        <option value="valledupar">Valledupar</option>
+                                        <option value="monteria">Montería</option>
+                                    </select>
+                                </div>
+                                <input type="text" placeholder="Ingresa el teléfono" id="phone" name="phone"
+                                    class="form__input">
+                                <input type="text" placeholder="Ingresa la dirección" id="address" name="address"
+                                    class="form__input">
+
+                                <div class="form__btn">
+                                    <button class="btn btn--sm">Crear usuario</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab__body">
+                    <table class="placed__order-table">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Edad</th>
+                            <th>Rol</th>
+                            <th>Genero</th>
+                            <th>Telefono</th>
+                            <th>Dirección</th>
+                            <th>Ciudad</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>name last_name</td>
+                            <td>email</td>
+                            <td>age</td>
+                            <td>role</td>
+                            <td>gender</td>
+                            <td>phone</td>
+                            <td>address</td>
+                            <td>city</td>
+                            <td>
+                                <a href="#" class="view__order view__button" data-id="{{_id}}">Ver</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p class="user-info-mod">
+                                Desde el panel de usuarios. Puedes cambiar fácilmente los roles del usuario, puedes
+                                eliminar los
+                                usuarios y ver las ordenes de compra realizadas por el mismo.
+                            </p>
+                            <h3>Selecciona una opción:</h3>
+                            <div class="buttons-container">
+                                <button class="admin__btn"><i class="fi fi-rr-shuffle"></i> Rol Admin</button>
+                                <button class="user__btn"><i class="fi fi-rr-shuffle"></i> Rol usuario</button>
+                                <button class="delete__btn"><i class="fi fi-rr-trash"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__content" id="products">
+                <h3 class="tab__header title__tab">
+                    Productos
+                    <a href="#" class="btn btn--sm" id="create-product">Crear producto</a>
+                </h3>
+
+                <div id="modal-create-prod" class="modal__create-prod">
+                    <div class="modal__create-prod-content">
+                        <span class="close-create-prod">&times;</span>
+                        <div class="register">
+                            <form enctype="multipart/form-data" class="form grid" id="form">
+                                <input type="text" placeholder="Nombre del producto" id="title" name="title"
+                                    class="form__input">
+                                <input type="number" placeholder="Precio del producto" id="price" name="price"
+                                    class="form__input">
+                                <input type="text" placeholder="Descripción" id="description" name="description"
+                                    class="form__input">
+                                <input type="text" placeholder="Marca del producto" id="brand" name="brand"
+                                    class="form__input pass">
+                                <input type="number" placeholder="Unidades disponibles" id="stock" name="stock"
+                                    class="form__input">
+                                <div class="form flex-between">
+                                    <label class="label">
+                                        Categoria:
+                                        <select name="category" class="select-field">
+                                            <option value="alimento">Alimento</option>
+                                            <option value="juguetes">Juguetes</option>
+                                            <option value="accesorios">Accesorios</option>
+                                            <option value="higiene">Higiene</option>
+                                            <option value="seguridad">Seguridad</option>
+                                            <option value="transporte">Transporte</option>
+                                            <option value="salud">Salud</option>
+                                            <option value="tecnologia">Tecnología</option>
+                                        </select>
+                                    </label>
+                                    <label class="label">
+                                        Tipo:
+                                        <select name="type_product" class="select-field">
+                                            <option value="null">Seleccionar</option>
+                                            <option value="destacado">Destacado</option>
+                                            <option value="mas vendido">Mas vendido</option>
+                                            <option value="nuevo arribo">Nuevo arribo</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="form-group flex-gap">
+                                    <figure class="image-preview">
+                                        <img src="https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png"
+                                            class="preview" alt="Foto de usuario" />
+                                    </figure>
+
+                                    <div class="file-upload">
+                                        <input type="file" name="image" id="customFile" class="file-input" />
+                                        <label for="customFile" class="file-label btn btn--sm">
+                                            Subir foto
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="thumbnail-container" class="form-group flex-gap">
+                                    <button type="button" id="add-thumbnail" class="btn btn--sm">Agregar Fotos</button>
+                                </div>
+
+                                <div class="form__btn">
+                                    <button class="btn btn--sm">Crear producto</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab__body">
+                    <table class="placed__order-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Marca</th>
+                                <th>Tipo del producto</th>
+                                <th>Categoria</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>title</td>
+                                <td>$ price</td>
+                                <td>brand</td>
+                                <td>type_product</td>
+                                <td>category</td>
+                                <td>
+                                    <a href="#" class="view__order view__btn" data-id="{{_id}}">Ver</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="modal-products" class="modal-products">
+                        <div class="modal-content-products">
+                            <span class="close-products">&times;</span>
+                            <div class="product" id="product-{{_id}}">
+                                <p class="user-info-mod">
+                                    Desde el panel de productos. Puedes cambiar fácilmente el tipo del producto, tambien
+                                    podras eliminarlo permanentemente.
+                                </p>
+
+                                <div class="buttons-container">
+                                    <button class="feature__btn"><i class="fi fi-rr-star"></i> Destacar</button>
+                                    <button class="new__arrive"><i class="fi fi-rr-shopping-cart-add"></i> Nuevo
+                                        Arribo</button>
+                                    <button class="best__seller"><i class="fi fi-rr-usd-circle"></i> Más
+                                        vendido</button>
+                                    <button class="update"><i class="fi fi-rr-refresh"></i>Actualizar producto</button>
+                                    <button class="delete__btn del"><i class="fi fi-rr-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab__content" content id="tickets">
+                <h3 class="tab__header">Ordenes</h3>
+                <div class="tab__body">
+                    <table class="placed__order-table">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Comprador</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>formatDate purchase_datetime</td>
+                            <td>this.purchaser.name this.purchaser.last_name</td>
+                            <td>status</td>
+                            <td>$ amount</td>
+                            <td>
+                                <a href="#" class="view__order view__button" data-id="{{_id}}">Ver</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div id="modal-tickets" class="modal-tickets" style="display: none;">
+                        <div class="modal-content-tickets">
+                            <span class="close-tickets">&times;</span>
+                            <div class="tickets__modal-wrapper section">
+                                <div class="buttons-container">
+                                    <p class="user-info-mod">
+                                        Desde el panel de tickets. Puedes cambiar fácilmente el estado de la compra,
+                                        tambien podras eliminar la orden permanentemente.
+                                    </p>
+                                    <h3>Selecciona una opción:</h3>
+                                    <button class="pay__btn"><i class="fi fi-rr-check-circle"></i> Pagado</button>
+                                    <button class="cancel__btn"><i class="fi fi-rr-cross-circle"></i> Cancelado</button>
+                                    <button class="process__btn"><i class="fi fi-rr-process"></i> En proceso</button>
+                                    <button class="delete__btn-t del"><i class="fi fi-rr-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab__content" id="address" role="tabpanel" aria-labelledby="address-title">
+                    <h3 class="tab__header" id="address-title">Mis Datos</h3>
+                    <div class="tab__body">
+                        <div class="address" aria-label="Información del usuario"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script src="/js/profileAdmin.js"></script>

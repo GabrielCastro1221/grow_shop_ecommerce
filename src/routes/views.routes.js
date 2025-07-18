@@ -7,6 +7,7 @@ router.get("/page-not-found", viewsController.renderPageNotFound);
 router.get("/acceso-denegado", viewsController.renderAccessDenied);
 router.get("/", viewsController.renderHome);
 router.get('/login', viewsController.renderIndex);
+router.get("/confirm", viewsController.renderEmailConfirm);
 router.get("/perfil-usuario", viewsController.renderProfileUser);
 router.get("/perfil-admin", viewsController.renderProfileAdmin);
 router.get("/tienda", viewsController.renderStore);

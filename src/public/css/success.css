@@ -1,0 +1,26 @@
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #088178;
+}
+
+p {
+    font-size: 18px;
+    color: #000;
+    margin: 20px 0;
+}
+
+
+.btn {
+    background-color: #088178;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
