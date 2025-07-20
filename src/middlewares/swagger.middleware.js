@@ -8,7 +8,7 @@ const swaggerOptions = {
             description: "API para la tienda en línea GROW SHOP: gestiona y adquiere productos para cultivo interior y exterior, herramientas de jardinería, sistemas hidropónicos, fertilizantes, iluminación, y más. Ideal para integrar funcionalidades de catálogo, carritos de compra, gestión de usuarios y otros servicios relacionados con el mundo del cultivo."
         }
     },
-    apis: ["./src/docs/**/*.yaml"]
+    apis: ["./src/docs/**/*.yml"]
 };
 
 module.exports = swaggerOptions;

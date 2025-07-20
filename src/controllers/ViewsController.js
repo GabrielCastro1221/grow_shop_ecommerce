@@ -4,6 +4,7 @@ const UserRepository = require("../repositories/UserRepository");
 const TicketRepository = require("../repositories/TicketRepository");
 const CartRepository = require("../repositories/CartRepository");
 const WishRepository = require("../repositories/WishlistRepository");
+const ShippingRepository = require("../repositories/ShippingRepository");
 
 class ViewsController {
     renderIndex(req, res) {
@@ -117,6 +118,7 @@ class ViewsController {
             if (!ticket) {
                 return res.redirect("/page-not-found");
             }
+
             res.render('ticket', { ticket });
         } catch (error) {
             logger.error(`Error occurred while rendering ticket view: ${error.message}`);

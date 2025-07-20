@@ -39,6 +39,7 @@
             {{/each}}
         </tbody>
     </table>
+
     <div class="cart__actions">
         <a href="#" class="btn flex btn--md btn--empty-cart" data-cart-id="{{cart._id}}"
             aria-label="Vaciar todos los productos del carrito">
@@ -56,29 +57,12 @@
         <form class="form grid" aria-labelledby="cart-title">
             <div class="label label__city">
                 <label for="city">Selecciona tu ciudad:</label>
-                <select class="select-field" name="city" id="city" required aria-label="Selecciona la ciudad de envío">
-                    <option value="" disabled selected>Selecciona tu ciudad</option>
-                    <option value="20000">Bogotá</option>
-                    <option value="16000">Medellín</option>
-                    <option value="16000">Cali</option>
-                    <option value="25000">Barranquilla</option>
-                    <option value="25000">Cartagena</option>
-                    <option value="11000">Manizales</option>
-                    <option value="16000">Pereira</option>
-                    <option value="24000">Bucaramanga</option>
-                    <option value="25000">Santa Marta</option>
-                    <option value="25000">Villavicencio</option>
-                    <option value="24000">Ibagué</option>
-                    <option value="24000">Neiva</option>
-                    <option value="24000">Popayán</option>
-                    <option value="24000">Sincelejo</option>
-                    <option value="25000">Riohacha</option>
-                    <option value="24000">Valledupar</option>
-                    <option value="24000">Montería</option>
-                </select>
+                <select class="select-field" name="city" id="city" required
+                    aria-label="Selecciona la ciudad de envío"></select>
             </div>
         </form>
     </div>
+    
     <div id="subtotal">
         <h3 style="color: #088178;">Total a Pagar</h3>
         <table>
@@ -101,3 +85,4 @@
 
 <script src="/js/cart.js"></script>
 <script src="/js/ticket.js"></script>
+<script src="/js/shipping.js"></script>
