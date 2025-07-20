@@ -7,6 +7,148 @@
     font-family: 'Spartan', sans-serif;
 }
 
+input,
+textarea {
+    color: hsl(154, 13%, 32%);
+    font-family: "Lato", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Spartan", sans-serif;
+    color: hsl(0, 0%, 13%);
+    font-weight: 600;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    line-height: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+textarea,
+input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: .75rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-block: 2rem;
+}
+
+.section--lg {
+    padding-block: 4rem;
+}
+
+.section__title {
+    font-size: 1.375rem;
+    margin-bottom: 1.5rem;
+}
+
+.section__title span {
+    color: #088178;
+}
+
+.form__input {
+    border: 1px solid hsl(0, 0%, 84%);
+    padding-inline: 1rem;
+    height: 45px;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+
+.form {
+    row-gap: 1rem;
+}
+
+.form__group {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.textarea {
+    height: 200px;
+    padding-block: 1rem;
+    resize: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #088178;
+    border: 2px solid #088178;
+    color: hsl(132, 6%, 83%);
+    padding-inline: 1.75rem;
+    line-height: 49px;
+    border-radius: .25rem;
+    font-family: "Spartan", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0, 0, 0.05, 1);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #088178;
+}
+
+.btn--md,
+.btn--sm {
+    font-family: "Spartan", sans-serif;
+    cursor: pointer;
+}
+
+.btn--md {
+    height: 45px;
+    line-height: 42px;
+}
+
+.btn--sm {
+    height: 40px;
+    line-height: 38px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
 h1 {
     font-size: 50px;
     line-height: 64px;
@@ -97,11 +239,11 @@ table {
 }
 
 .form__input {
-    border: 1px solid var(--border-color-alt);
+    border: 1px solid hsl(0, 0%, 84%);
     padding-inline: 1rem;
     height: 45px;
     border-radius: 0.25rem;
-    font-size: var(--small-font-size);
+    font-size: 0.875rem;
 }
 
 .form {

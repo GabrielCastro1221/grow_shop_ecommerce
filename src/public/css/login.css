@@ -3,6 +3,11 @@
     align-items: flex-start;
 }
 
+#form-title {
+    color: #088178;
+    font-weight: 600;
+}
+
 .login,
 .register {
     border: 1px solid hsl(0, 0%, 84%);
@@ -30,7 +35,7 @@
 .label {
     font-size: 16px;
     font-weight: 500;
-    color: vhsl(154, 13%, 32%);
+    color: hsl(154, 13%, 32%);
 }
 
 .select-city {
@@ -43,7 +48,7 @@
     font-size: 15px;
     padding: 6px;
     border-radius: 0.3rem;
-    color: vhsl(154, 13%, 32%);
+    color: hsl(154, 13%, 32%);
     outline: none;
 }
 
@@ -87,7 +92,7 @@
 .image-preview {
     width: 60px;
     height: 60px;
-    border: 2px solid var(--btncolor);
+    border: 2px solid #088178;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -136,7 +141,6 @@
     font-size: 0.875rem;
     font-weight: 600;
 }
-
 
 #thumbnail-container {
     display: flex;
