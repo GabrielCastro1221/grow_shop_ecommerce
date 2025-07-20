@@ -31,6 +31,11 @@
     font-size: 15px;
 }
 
+.shop-now {
+    text-decoration: none;
+    color: #088178
+}
+
 #product1 {
     text-align: center;
 }

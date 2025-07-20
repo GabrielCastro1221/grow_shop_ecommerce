@@ -166,31 +166,45 @@ class ProductRepository {
         return prod;
     }
 
-    async getFeaturedProducts() {
-        try {
-            const featured = await productModel
-                .find({ type_product: "destacado" })
-                .lean();
+async getFeaturedProducts(page = 1) {
+    try {
+        const options = {
+            page,
+            limit: 3,
+            lean: true,
+        };
 
-            return featured;
-        } catch (error) {
-            logger.error("Error al obtener productos destacados:", error.message);
-            throw new Error(error.message);
-        }
+        const featured = await productModel.paginate(
+            { type_product: "destacado" },
+            options
+        );
+
+        return featured;
+    } catch (error) {
+        logger.error("Error al obtener productos destacados:", error.message);
+        throw new Error(error.message);
     }
+}
 
-    async getNewArrive() {
-        try {
-            const newArrive = await productModel
-                .find({ type_product: "nuevo arribo" })
-                .lean();
+async getNewArrive(page = 1) {
+    try {
+        const options = {
+            page,
+            limit: 3,
+            lean: true,
+        };
 
-            return newArrive;
-        } catch (error) {
-            logger.error("Error al obtener nuevos arribos:", error.message);
-            throw new Error(error.message);
-        }
+        const newArrive = await productModel.paginate(
+            { type_product: "nuevo arribo" },
+            options
+        );
+
+        return newArrive;
+    } catch (error) {
+        logger.error("Error al obtener nuevos arribos:", error.message);
+        throw new Error(error.message);
     }
+}
 
     async getMoreSeller() {
         try {

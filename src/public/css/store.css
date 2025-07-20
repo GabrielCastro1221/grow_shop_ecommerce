@@ -2,6 +2,13 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
+.products__container-f {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .product__item {
     border: 1px solid hsl(132, 6%, 83%);
     border-radius: 1.5rem;

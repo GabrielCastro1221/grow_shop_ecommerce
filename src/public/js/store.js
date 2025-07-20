@@ -28,7 +28,10 @@ function renderProducts(productos) {
                         <a href="/tienda/${prod._id}" class="action__btn" aria-label="Detalle del producto">
                             <i class="fi fi-rr-eye"></i>
                         </a>
-                        <a href="#" class="action__btn share__btn" aria-label="Compartir" 
+                        <a href="#" class="action__btn" aria-label="Añadir a favoritos">
+                            <i class="fi fi-rr-heart"></i>
+                        </a>
+                        <a href="#" class="action__btn share__btn" aria-label="Compartir"
                         data-id="${prod._id}" data-title="${prod.title}" data-image="${prod.image}">
                             <i class="fi fi-rr-share"></i>
                         </a>

@@ -21,13 +21,23 @@ class TicketRepository {
         return user;
     }
 
-    async getTickets() {
+    async getTickets({ page = 1, limit = 1000 }) {
         try {
-            const tickets = await ticketModel.find({}).populate("purchaser").lean();
-            if (tickets.length === 0) {
+            const options = {
+                page: parseInt(page),
+                limit: parseInt(limit),
+                populate: "purchaser",
+                lean: true,
+                sort: { createdAt: -1 },
+            };
+
+            const result = await ticketModel.paginate({}, options);
+
+            if (result.docs.length === 0) {
                 logger.warning("No se encontraron tickets");
             }
-            return tickets;
+
+            return result;
         } catch (error) {
             throw new Error(error.message);
         }

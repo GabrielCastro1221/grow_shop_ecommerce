@@ -1,0 +1,42 @@
+<h3 class="tab__header">Ordenes</h3>
+<div class="tab__body">
+    <table class="placed__order-table">
+        <tr>
+            <th>Fecha</th>
+            <th>Comprador</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        {{#each tickets.docs}}
+        <tr>
+            <td>{{formatDate purchase_datetime}}</td>
+            <td>{{purchaser.name}} {{purchaser.last_name}}</td>
+            <td>{{status}}</td>
+            <td>${{amount}}</td>
+            <td>
+                <a href="#" class="view__order view__button" data-id="{{_id}}">Ver</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <div id="modal-tickets" class="modal-tickets" style="display: none;">
+        <div class="modal-content-tickets">
+            <span class="close-tickets">&times;</span>
+            <div class="tickets__modal-wrapper section">
+                <div class="buttons-container">
+                    <p class="user-info-mod">
+                        Desde el panel de tickets. Puedes cambiar fácilmente el estado de la compra,
+                        tambien podras eliminar la orden permanentemente.
+                    </p>
+                    <h3>Selecciona una opción:</h3>
+                    <button class="pay__btn"><i class="fi fi-rr-check-circle"></i> Pagado</button>
+                    <button class="cancel__btn"><i class="fi fi-rr-cross-circle"></i> Cancelado</button>
+                    <button class="process__btn"><i class="fi fi-rr-process"></i> En proceso</button>
+                    <button class="delete__btn-t del"><i class="fi fi-rr-trash"></i> Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

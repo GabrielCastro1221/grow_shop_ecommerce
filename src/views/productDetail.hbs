@@ -1,116 +1,32 @@
 <link rel="stylesheet" href="/css/productDetail.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/store.css">
+<link rel="stylesheet" href="/css/featured.css">
 
 <section id="prodetail" class="section-p1">
-    <div class="single-pro-image">
-        <img src="/assets/img/products/f1.jpg" width="100%" alt="" id="MainImg">
-        <div class="small-img-group">
-            <div class="small-img-col">
-                <img src="/assets/img/products/f1.jpg" width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="/assets/img/products/f2.jpg" width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="/assets/img/products/f3.jpg" width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="/assets/img/products/f4.jpg" width="100%" class="small-img" alt="">
-            </div>
+    <section class="details__group" aria-labelledby="product-title">
+        <img src="{{product.image}}" alt="Imagen principal de {{product.title}}" class="details__img">
+        {{#if product.thumbnail}}
+        <div class="details__small-images grid" aria-label="Imágenes adicionales de {{product.title}}">
+            {{#each product.thumbnail}}
+            <img src="{{this.url}}" alt="Vista alternativa de {{product.title}}" class="details__small-img">
+            {{/each}}
         </div>
-    </div>
+        {{/if}}
+    </section>
 
     <div class="single-pro-details">
-        <h6>Home / T-Shirt</h6>
-        <h4>Men´s Fashion T Shirt</h4>
-        <h2>$139.00</h2>
-        <select>
-            <option>Select Size</option>
-            <option>XL</option>
-            <option>XXL</option>
-            <option>Small</option>
-            <option>Large</option>
-        </select>
+        <h6>{{product.category}}</h6>
+        <h4>{{product.title}}</h4>
+        <h2>${{product.price}}</h2>
         <input type="number" value="1">
-        <button class="normal">Add To Cart</button>
-        <h4>Product Details</h4>
-        <span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore totam, iusto tempora facere culpa, sed
-            repellat minima molestias fuga, harum nam exercitationem doloremque! Veritatis, fugiat! Inventore saepe,
-            amet modi, assumenda et quidem dolorem ad facere iure, aliquid placeat officia. Aspernatur, tenetur
-        </span>
+        <button class="normal">Añadir al carrito</button>
+        <h4>Detalles del producto</h4>
+        <span>{{product.description}}</span>
     </div>
 </section>
 
-<section id="product-arrival" class="section-p1">
-    <h2>New Arrivals</h2>
-    <p>Summer Collection New Modern Design</p>
-    <div class="pro-container">
-        <div class="pro">
-            <img src="/assets/img/products/n1.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="/assets/img/products/n2.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="/assets/img/products/n3.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-        <div class="pro">
-            <img src="/assets/img/products/n4.jpg" alt="">
-            <div class="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div class="star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-                <h4>$78</h4>
-            </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-        </div>
-</section>
-
+{{> newArrival}}
 {{> newsletter}}
 
 <script src="/js/productDetail.js"></script>

@@ -37,7 +37,7 @@ class UserRepository {
 
             const options = {
                 page: parseInt(page),
-                limit: 10,
+                limit: 1000,
                 sort: { createdAt: -1 },
                 lean: true,
             };

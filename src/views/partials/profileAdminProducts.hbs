@@ -1,129 +1,105 @@
 <link rel="stylesheet" href="/css/login.css">
 
-<div class="tab__content" id="products">
-    <h3 class="tab__header title__tab">
-        Productos
-        <a href="#" class="create-prod" id="create-product">Crear producto</a>
-    </h3>
+<h3 class="tab__header title__tab">
+    Productos
+    <a href="#" class="create-prod" id="create-product">Crear producto</a>
+</h3>
 
-    <div id="modal-create-prod" class="modal__create-prod">
-        <div class="modal__create-prod-content">
-            <span class="close-create-prod">&times;</span>
-            <div class="register">
-                <h3>Crear Producto</h3>
-                <form action="/api/v1/products/create" method="POST" enctype="multipart/form-data" class="form grid"
-                    id="form">
-                    <input type="text" placeholder="Nombre del producto" id="title" name="title" class="form__input">
-                    <input type="number" placeholder="Precio del producto" id="price" name="price" class="form__input">
-                    <input type="text" placeholder="Descripción" id="description" name="description"
-                        class="form__input">
-                    <input type="text" placeholder="Marca del producto" id="brand" name="brand"
-                        class="form__input pass">
-                    <input type="number" placeholder="Unidades disponibles" id="stock" name="stock" class="form__input">
-                    <div class="form flex-between">
-                        <label class="label">
-                            Categoria:
-                            <select name="category" class="select-field">
-                                <option value="alimento">Alimento</option>
-                                <option value="juguetes">Juguetes</option>
-                                <option value="accesorios">Accesorios</option>
-                                <option value="higiene">Higiene</option>
-                                <option value="seguridad">Seguridad</option>
-                                <option value="transporte">Transporte</option>
-                                <option value="salud">Salud</option>
-                                <option value="tecnologia">Tecnología</option>
-                            </select>
-                        </label>
-                        <label class="label">
-                            Tipo:
-                            <select name="type_product" class="select-field">
-                                <option value="null">Seleccionar</option>
-                                <option value="destacado">Destacado</option>
-                                <option value="mas vendido">Mas vendido</option>
-                                <option value="nuevo arribo">Nuevo arribo</option>
-                            </select>
-                        </label>
-                    </div>
-
-                    <div class="form-group flex-gap">
-                        <figure class="image-preview">
-                            <img src="https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png"
-                                class="preview" alt="Foto de usuario" />
-                        </figure>
-
-                        <div class="file-upload">
-                            <input type="file" name="image" id="customFile" class="file-input" />
-                            <label for="customFile" class="file-label create-prod">
-                                Subir foto
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="thumbnail-container" class="form-group flex-gap">
-                        <button type="button" id="add-thumbnail" class="create-prod">Agregar Fotos</button>
-                    </div>
-
-                    <div class="form__btn">
-                        <button class="create-prod">Crear producto</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="tab__body">
-        <table class="placed__order-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Marca</th>
-                    <th>Tipo del producto</th>
-                    <th>Categoria</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="products-body">
-                {{#each products.productos}}
-                <tr>
-                    <td>{{this.title}}</td>
-                    <td>$ {{this.price}}</td>
-                    <td>{{this.brand}}</td>
-                    <td>{{this.type_product}}</td>
-                    <td>{{this.category}}</td>
-                    <td>
-                        <a href="#" class="view__order view__btn" data-id="{{this._id}}">Ver</a>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-
-        <div class="pagination" id="pagination-container">
-            {{#if products.pagination.hasPrevPage}}
-            <a href="?page={{products.pagination.prevPage}}&limit={{products.pagination.limit}}&sort={{products.pagination.sort}}&query={{products.pagination.query}}"
-                class="pagination__btn">Anterior</a>
-            {{/if}}
-
-            <span class="pagination__current">Página {{products.pagination.currentPage}} de
-                {{products.pagination.totalPages}}</span>
-
-            {{#if products.pagination.hasNextPage}}
-            <a href="?page={{products.pagination.nextPage}}&limit={{products.pagination.limit}}&sort={{products.pagination.sort}}&query={{products.pagination.query}}"
-                class="pagination__btn">Siguiente</a>
-            {{/if}}
-        </div>
-
-        <div id="modal-products" class="modal-products">
-            <div class="modal-content-products">
-                <span class="close-products">&times;</span>
-                <div class="product" id="modal-product-content">
-                    <!-- Aquí insertaremos dinámicamente el contenido -->
+<div id="modal-create-prod" class="modal__create-prod">
+    <div class="modal__create-prod-content">
+        <span class="close-create-prod">&times;</span>
+        <div class="register">
+            <h3>Crear Producto</h3>
+            <form action="/api/v1/products/create" method="POST" enctype="multipart/form-data" class="form grid"
+                id="form">
+                <input type="text" placeholder="Nombre del producto" id="title" name="title" class="form__input">
+                <input type="number" placeholder="Precio del producto" id="price" name="price" class="form__input">
+                <input type="text" placeholder="Descripción" id="description" name="description" class="form__input">
+                <input type="text" placeholder="Marca del producto" id="brand" name="brand" class="form__input pass">
+                <input type="number" placeholder="Unidades disponibles" id="stock" name="stock" class="form__input">
+                <div class="form flex-between">
+                    <label class="label">
+                        Categoria:
+                        <select name="category" class="select-field">
+                            <option value="alimento">Alimento</option>
+                            <option value="juguetes">Juguetes</option>
+                            <option value="accesorios">Accesorios</option>
+                            <option value="higiene">Higiene</option>
+                            <option value="seguridad">Seguridad</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="salud">Salud</option>
+                            <option value="tecnologia">Tecnología</option>
+                        </select>
+                    </label>
+                    <label class="label">
+                        Tipo:
+                        <select name="type_product" class="select-field">
+                            <option value="null">Seleccionar</option>
+                            <option value="destacado">Destacado</option>
+                            <option value="mas vendido">Mas vendido</option>
+                            <option value="nuevo arribo">Nuevo arribo</option>
+                        </select>
+                    </label>
                 </div>
-            </div>
-        </div>
 
+                <div class="form-group flex-gap">
+                    <figure class="image-preview">
+                        <img src="https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png"
+                            class="preview" alt="Foto de usuario" />
+                    </figure>
+
+                    <div class="file-upload">
+                        <input type="file" name="image" id="customFile" class="file-input" />
+                        <label for="customFile" class="file-label create-prod">
+                            Subir foto
+                        </label>
+                    </div>
+                </div>
+
+                <div id="thumbnail-container" class="form-group flex-gap">
+                    <button type="button" id="add-thumbnail" class="create-prod">Agregar Fotos</button>
+                </div>
+
+                <div class="form__btn">
+                    <button class="create-prod">Crear producto</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<script src="/js/profileAdmin/adminProducts.js"></script>
+<div class="tab__body">
+    <table class="placed__order-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Tipo del producto</th>
+                <th>Categoria</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="products-body">
+            {{#each products.productos}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>$ {{this.price}}</td>
+                <td>{{this.brand}}</td>
+                <td>{{this.type_product}}</td>
+                <td>{{this.category}}</td>
+                <td>
+                    <a href="#" class="view__order view__btn" data-id="{{this._id}}">Ver</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div id="modal-products" class="modal-products">
+        <div class="modal-content-products">
+            <span class="close-products">&times;</span>
+            <div class="product" id="modal-product-content"></div>
+        </div>
+    </div>
+</div>

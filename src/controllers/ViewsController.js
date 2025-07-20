@@ -1,5 +1,8 @@
 const { logger } = require('../middlewares/logger.middleware');
-const ProductRepository = require("../repositories/ProductRepository")
+const ProductRepository = require("../repositories/ProductRepository");
+const UserRepository = require("../repositories/UserRepository");
+const TicketRepository = require("../repositories/TicketRepository");
+
 class ViewsController {
     renderIndex(req, res) {
         try {
@@ -10,14 +13,39 @@ class ViewsController {
         }
     }
 
-    renderHome(req, res) {
+    async renderHome(req, res) {
         try {
-            res.render('home');
+            const page = parseInt(req.query.page) || 1;
+
+            const featured = await ProductRepository.getFeaturedProducts(page);
+            const arrival = await ProductRepository.getNewArrive(page);
+
+            res.render('home', {
+                featured: featured.docs,
+                featuredPagination: {
+                    page: featured.page,
+                    totalPages: featured.totalPages,
+                    hasNextPage: featured.hasNextPage,
+                    hasPrevPage: featured.hasPrevPage,
+                    nextPage: featured.nextPage,
+                    prevPage: featured.prevPage,
+                },
+                arrival: arrival.docs,
+                arrivalPagination: {
+                    page: arrival.page,
+                    totalPages: arrival.totalPages,
+                    hasNextPage: arrival.hasNextPage,
+                    hasPrevPage: arrival.hasPrevPage,
+                    nextPage: arrival.nextPage,
+                    prevPage: arrival.prevPage,
+                }
+            });
         } catch (error) {
             logger.error(`Error occurred while rendering home view: ${error.message}`);
             res.status(500).send('Internal Server Error');
         }
     }
+
 
     renderStore(req, res) {
         try {
@@ -28,9 +56,25 @@ class ViewsController {
         }
     }
 
-    renderProductDetail(req, res) {
+    async renderProductDetail(req, res) {
         try {
-            res.render('productDetail');
+            const { id } = req.params;
+            const page = parseInt(req.query.page) || 1;
+            const product = await ProductRepository.getProductById(id);
+            const arrival = await ProductRepository.getNewArrive(page);
+
+            res.render('productDetail', {
+                product,
+                arrival: arrival.docs,
+                arrivalPagination: {
+                    page: arrival.page,
+                    totalPages: arrival.totalPages,
+                    hasNextPage: arrival.hasNextPage,
+                    hasPrevPage: arrival.hasPrevPage,
+                    nextPage: arrival.nextPage,
+                    prevPage: arrival.prevPage,
+                }
+            });
         } catch (error) {
             logger.error(`Error occurred while rendering productDetail view: ${error.message}`);
             res.status(500).send('Internal Server Error');
@@ -72,10 +116,10 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
-
     async renderProfileAdmin(req, res) {
         try {
-            const { page, limit, sort, query } = req.query;
+            const { page = 1, limit = 1000, sort, query, role, gender } = req.query;
+
             const products = await ProductRepository.getPaginatedProducts({
                 page,
                 limit,
@@ -83,21 +127,41 @@ class ViewsController {
                 query,
             });
 
+            const users = await UserRepository.getUsers({
+                page,
+                role,
+                gender,
+            });
+
+            const tickets = await TicketRepository.getTickets({
+                page,
+                limit,
+            });
+
             if (products.productos.length === 0) {
                 return res.status(404).json({ message: "No se encontraron productos" });
             }
 
             if (req.headers.accept?.includes('application/json')) {
-                return res.json(products);
+                return res.json({ products, users, tickets });
             }
 
-            res.render('profileAdmin', { products, limit, sort, query, page });
+            res.render('profileAdmin', {
+                products,
+                users,
+                tickets,
+                limit,
+                sort,
+                query,
+                role,
+                gender,
+                page,
+            });
         } catch (error) {
             logger.error(`Error occurred while rendering profileAdmin view: ${error.message}`);
             res.status(500).send('Internal Server Error');
         }
     }
-
 
     renderPageNotFound(req, res) {
         try {
