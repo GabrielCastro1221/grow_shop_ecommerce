@@ -6,7 +6,6 @@ const { Server } = require("socket.io");
 const socketModules = [
     require("../services/webSocket/SocketProducts"),
     require("../services/webSocket/SocketTicket"),
-    require("../services/webSocket/SocketUser"),
 ];
 
 const serverListenMiddleware = (app) => {

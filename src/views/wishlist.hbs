@@ -19,28 +19,32 @@
         {{#each wish.products}}
         <tr>
             <td>
-                <a href="#">
+                <a href="#" class="delete-btn" data-wish-id="{{../wish._id}}" data-product-id="{{this.product._id}}">
                     <i class="far fa-times-circle" style="color: red;"></i>
                 </a>
             </td>
-            <td>
-                <img src="{{this.product.image}}" alt="">
-            </td>
+            <td><img src="{{this.product.image}}" alt=""></td>
             <td>{{this.product.title}}</td>
             <td>${{this.product.price}}</td>
-            <td><button class="btn">Agregar al carrito</button></td>
-        </tr>
+            <td>
+                <a class="btn" href="/tienda/{{this.product._id}}">
+                    Ver producto
+                </a>
+            </td>
 
+        </tr>
         {{/each}}
     </table>
 
     <div class="cart__actions">
-        <a href="#" class="btn flex btn--md btn--empty-cart" aria-label="Vaciar todos los productos del carrito">
+        <a href="#" class="btn flex btn--md btn--empty-cart" aria-label="Vaciar todos los productos de favoritos"
+            data-wish-id="{{wish._id}}">
             <i class="fi fi-rr-trash"></i> Vaciar Favoritos
         </a>
-
         <a href="/tienda" class="btn flex btn--md" aria-label="Continuar comprando en la tienda">
             <i class="fi fi-rr-basket-shopping-simple"></i> Ir a la tienda
         </a>
     </div>
 </section>
+
+<script src="/js/wishlist.js"></script>

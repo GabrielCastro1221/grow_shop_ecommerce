@@ -5,53 +5,45 @@
         <div class="checkout__group">
             <section class="order-details">
                 <h3 class="section__title" id="shipping-title">Datos para el envío de los productos</h3>
-
                 <form action="" class="form grid" aria-labelledby="shipping-title">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" value="{{ticket.purchaser.name}}" class="form__input" readonly
                         aria-label="Nombre del comprador">
-
                     <label for="last_name">Apellido:</label>
                     <input type="text" id="last_name" value="{{ticket.purchaser.last_name}}" class="form__input"
                         readonly aria-label="Apellido del comprador">
-
                     <label for="address">Dirección de envío:</label>
-                    <input type="text" id="address" value="{{ticket.purchaser.address}}" class="form__input"
+                    <input type="text" id="address" value="{{ticket.purchaser.address}}" class="form__input" readonly
                         aria-label="Dirección de envío">
-
                     <label for="city">Ciudad:</label>
-                    <input type="text" id="city" value="{{ticket.purchaser.city}}" class="form__input"
+                    <input type="text" id="city" value="{{ticket.purchaser.city}}" class="form__input" readonly
                         aria-label="Ciudad de envío">
-
                     <label for="phone">Teléfono de contacto:</label>
-                    <input type="text" id="phone" value="{{ticket.purchaser.phone}}" class="form__input"
+                    <input type="text" id="phone" value="{{ticket.purchaser.phone}}" class="form__input" readonly
                         aria-label="Número de teléfono">
-
                     <label for="email">Correo electrónico:</label>
                     <input type="email" id="email" value="{{ticket.purchaser.email}}" class="form__input" readonly
                         aria-label="Correo electrónico del comprador">
                     <button class="normal" style="color: #fff; background-color: #088178;">Guardar</button>
                 </form>
             </section>
-
         </div>
 
         <div class="checkout__group">
             <section class="order">
                 <h3 class="section__title" id="order-title">Orden de compra - Detalles del pago</h3>
-
                 <table class="order__table" aria-label="Resumen de la orden de compra">
                     <tr>
                         <td><span class="order__subtitle">Subtotal</span></td>
-                        <td colspan="2"><span class="table__price">$ticket.subtotal</span></td>
+                        <td colspan="2"><span class="table__price">${{ticket.subtotal}}</span></td>
                     </tr>
                     <tr>
                         <td><span class="order__subtitle">Envío</span></td>
-                        <td colspan="2"><span class="table__price">ticket.shipping</span></td>
+                        <td colspan="2"><span class="table__price">${{ticket.shipping}}</span></td>
                     </tr>
                     <tr>
                         <td><span class="order__subtitle">Total a pagar</span></td>
-                        <td colspan="2"><span class="order__grand-total">$ticket.amount</span></td>
+                        <td colspan="2"><span class="order__grand-total">${{ticket.amount}}</span></td>
                     </tr>
                 </table>
             </section>

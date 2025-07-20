@@ -11,6 +11,12 @@ const user = JSON.parse(localStorage.getItem("user")) || {};
 const cartId = user.cart;
 const wishId = user.wishlist;
 
+const badgeColorMap = {
+    "destacado": "light-pink",
+    "nuevo arribo": "light-green",
+    "más vendido": "light-orange"
+};
+
 socket.emit("getPaginatedProducts", {
     page: currentPage,
     limit,
@@ -27,6 +33,9 @@ function renderProducts(productos) {
     container.innerHTML = "";
 
     productos.forEach((prod) => {
+        const typeNormalized = prod.type_product?.toLowerCase() || "";
+        const badgeClass = badgeColorMap[typeNormalized] || 'light-blue';
+
         const productHTML = `
             <div class="product__item">
                 <div class="product__banner">
@@ -40,17 +49,17 @@ function renderProducts(productos) {
                             <i class="fi fi-rr-eye"></i>
                         </a>
                         <form action="/api/v1/wishlists/${wishId}/products/${prod._id}" method="POST" class="add-to-wish-form">
-                        <button type="submit" class="action__btn" aria-label="Añadir a favoritos">
-                            <i class="fi fi-rr-heart"></i>
-                        </button>
-                    </form>
+                            <button type="submit" class="action__btn" aria-label="Añadir a favoritos">
+                                <i class="fi fi-rr-heart"></i>
+                            </button>
+                        </form>
                         <a href="#" class="action__btn share__btn" aria-label="Compartir"
                         data-id="${prod._id}" data-title="${prod.title}" data-image="${prod.image}">
                             <i class="fi fi-rr-share"></i>
                         </a>
                     </div>
 
-                    <div class="product__badge light-pink">
+                    <div class="product__badge ${badgeClass}">
                         ${prod.type_product}
                     </div>
                 </div>
@@ -66,10 +75,10 @@ function renderProducts(productos) {
                     </div>
 
                     <form action="/api/v1/carts/${cartId}/products/${prod._id}" method="POST" class="add-to-cart-form">
-                    <button type="submit" class="action__btn cart__btn" aria-label="Añadir al carrito">
-                        <i class="fi fi-rr-shopping-cart"></i>
-                    </button>
-                </form>
+                        <button type="submit" class="action__btn cart__btn" aria-label="Añadir al carrito">
+                            <i class="fi fi-rr-shopping-cart"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         `;

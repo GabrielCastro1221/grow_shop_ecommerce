@@ -110,9 +110,14 @@ class ViewsController {
         }
     }
 
-    renderTicket(req, res) {
+    async renderTicket(req, res) {
         try {
-            res.render('ticket');
+            const ticketId = req.params.id;
+            const ticket = await TicketRepository.getTicketById(ticketId);
+            if (!ticket) {
+                return res.redirect("/page-not-found");
+            }
+            res.render('ticket', { ticket });
         } catch (error) {
             logger.error(`Error occurred while rendering ticket view: ${error.message}`);
             res.status(500).send('Internal Server Error');

@@ -22,7 +22,8 @@
             <tr>
                 <td>
                     <a href="#">
-                        <i class="far fa-times-circle" style="color: red;"></i>
+                        <i class="far fa-times-circle delete-btn" style="color: red; cursor: pointer;"
+                            data-cart-id="{{../cart._id}}" data-product-id="{{this.product._id}}"></i>
                     </a>
                 </td>
                 <td>
@@ -38,12 +39,11 @@
             {{/each}}
         </tbody>
     </table>
-
     <div class="cart__actions">
-        <a href="#" class="btn flex btn--md btn--empty-cart" aria-label="Vaciar todos los productos del carrito">
+        <a href="#" class="btn flex btn--md btn--empty-cart" data-cart-id="{{cart._id}}"
+            aria-label="Vaciar todos los productos del carrito">
             <i class="fi fi-rr-trash"></i> Vaciar carrito
         </a>
-
         <a href="/tienda" class="btn flex btn--md" aria-label="Continuar comprando en la tienda">
             <i class="fi fi-rr-basket-shopping-simple"></i> Continuar comprando
         </a>
@@ -84,18 +84,20 @@
         <table>
             <tr>
                 <td>Subtotal</td>
-                <td>$ {{cartSubtotal cart.products}}</td>
+                <td id="subtotal-amount">$ {{cartSubtotal cart.products}}</td>
             </tr>
             <tr>
                 <td>Costo del envio</td>
-                <td>Free</td>
+                <td id="shipping-amount">$ 0</td>
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
-                <td><strong>$ {{cartSubtotal cart.products}}</strong></td>
+                <td><strong id="total-amount">$ {{cartSubtotal cart.products}}</strong></td>
             </tr>
         </table>
-        <button class="normal">Metodos de pago</button>
+        <button class="normal">Generar orden de compra</button>
     </div>
-
 </section>
+
+<script src="/js/cart.js"></script>
+<script src="/js/ticket.js"></script>
