@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/cart.css">
-
+<link rel="stylesheet" href="/css/login.css">
 <section id="cart-header">
     <h2>#let´s_talk</h2>
     <p>LEAVE MESSAGE, We love to hear from you! </p>
@@ -9,91 +9,93 @@
     <table width="100%">
         <thead>
             <tr>
-                <td>Remove</td>
-                <td>Image</td>
-                <td>Product</td>
-                <td>Price</td>
-                <td>Quantity</td>
+                <td>Quitar</td>
+                <td>Foto</td>
+                <td>Producto</td>
+                <td>Precio</td>
+                <td>Cantidad</td>
                 <td>Subtotal</td>
             </tr>
         </thead>
         <tbody>
+            {{#each cart.products}}
             <tr>
                 <td>
                     <a href="#">
-                        <i class="far fa-times-circle"></i>
+                        <i class="far fa-times-circle" style="color: red;"></i>
                     </a>
                 </td>
                 <td>
-                    <img src="/assets/img/products/f1.jpg" alt="">
+                    <img src="{{this.product.image}}" alt="">
                 </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
+                <td>{{this.product.title}}</td>
+                <td>${{this.product.price}}</td>
                 <td>
-                    <input type="number" value="1">
+                    <input type="number" value="{{this.quantity}}">
                 </td>
-                <td>$118.19</td>
+                <td>${{multiply this.quantity this.product.price}}</td>
             </tr>
-            <tr>
-                <td>
-                    <a href="#">
-                        <i class="far fa-times-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <img src="/assets/img/products/f2.jpg" alt="">
-                </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
-                <td>
-                    <input type="number" value="1">
-                </td>
-                <td>$118.19</td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#">
-                        <i class="far fa-times-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <img src="/assets/img/products/f3.jpg" alt="">
-                </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
-                <td>
-                    <input type="number" value="1">
-                </td>
-                <td>$118.19</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
+
+    <div class="cart__actions">
+        <a href="#" class="btn flex btn--md btn--empty-cart" aria-label="Vaciar todos los productos del carrito">
+            <i class="fi fi-rr-trash"></i> Vaciar carrito
+        </a>
+
+        <a href="/tienda" class="btn flex btn--md" aria-label="Continuar comprando en la tienda">
+            <i class="fi fi-rr-basket-shopping-simple"></i> Continuar comprando
+        </a>
+    </div>
 </section>
 
 <section id="cart-add" class="section-p1">
     <div id="coupon">
-        <h3>Apply coupon</h3>
-        <div>
-            <input type="text" placeholder="Enter Your Coupon">
-            <button class="normal">Apply</button>
-        </div>
+        <h3 style="color: #088178;">Ciudad del destino</h3>
+        <form class="form grid" aria-labelledby="cart-title">
+            <div class="label label__city">
+                <label for="city">Selecciona tu ciudad:</label>
+                <select class="select-field" name="city" id="city" required aria-label="Selecciona la ciudad de envío">
+                    <option value="" disabled selected>Selecciona tu ciudad</option>
+                    <option value="20000">Bogotá</option>
+                    <option value="16000">Medellín</option>
+                    <option value="16000">Cali</option>
+                    <option value="25000">Barranquilla</option>
+                    <option value="25000">Cartagena</option>
+                    <option value="11000">Manizales</option>
+                    <option value="16000">Pereira</option>
+                    <option value="24000">Bucaramanga</option>
+                    <option value="25000">Santa Marta</option>
+                    <option value="25000">Villavicencio</option>
+                    <option value="24000">Ibagué</option>
+                    <option value="24000">Neiva</option>
+                    <option value="24000">Popayán</option>
+                    <option value="24000">Sincelejo</option>
+                    <option value="25000">Riohacha</option>
+                    <option value="24000">Valledupar</option>
+                    <option value="24000">Montería</option>
+                </select>
+            </div>
+        </form>
     </div>
     <div id="subtotal">
-        <h3>Cart Totals</h3>
+        <h3 style="color: #088178;">Total a Pagar</h3>
         <table>
             <tr>
-                <td>Cart Subtotal</td>
-                <td>$ 335</td>
+                <td>Subtotal</td>
+                <td>$ {{cartSubtotal cart.products}}</td>
             </tr>
             <tr>
-                <td>Shipping</td>
+                <td>Costo del envio</td>
                 <td>Free</td>
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
-                <td><strong>$ 335</strong></td>
+                <td><strong>$ {{cartSubtotal cart.products}}</strong></td>
             </tr>
         </table>
-        <button class="normal">Proceed to checkout</button>
+        <button class="normal">Metodos de pago</button>
     </div>
+
 </section>

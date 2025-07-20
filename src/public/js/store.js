@@ -7,6 +7,17 @@ const socket = io();
 const container = document.getElementById("products-container");
 const paginationContainer = document.getElementById("pagination");
 
+const user = JSON.parse(localStorage.getItem("user")) || {};
+const cartId = user.cart;
+const wishId = user.wishlist;
+
+socket.emit("getPaginatedProducts", {
+    page: currentPage,
+    limit,
+    sort,
+    query,
+});
+
 socket.on("products", ({ productos, pagination }) => {
     renderProducts(productos);
     renderPagination(pagination);
@@ -28,9 +39,11 @@ function renderProducts(productos) {
                         <a href="/tienda/${prod._id}" class="action__btn" aria-label="Detalle del producto">
                             <i class="fi fi-rr-eye"></i>
                         </a>
-                        <a href="#" class="action__btn" aria-label="Añadir a favoritos">
+                        <form action="/api/v1/wishlists/${wishId}/products/${prod._id}" method="POST" class="add-to-wish-form">
+                        <button type="submit" class="action__btn" aria-label="Añadir a favoritos">
                             <i class="fi fi-rr-heart"></i>
-                        </a>
+                        </button>
+                    </form>
                         <a href="#" class="action__btn share__btn" aria-label="Compartir"
                         data-id="${prod._id}" data-title="${prod.title}" data-image="${prod.image}">
                             <i class="fi fi-rr-share"></i>
@@ -52,11 +65,11 @@ function renderProducts(productos) {
                         <span class="new__price">$${prod.price}</span>
                     </div>
 
-                    <form class="add-to-cart-form" data-product-id="${prod._id}">
-                        <button type="submit" class="action__btn cart__btn" aria-label="Añadir al carrito">
-                            <i class="fi fi-rr-shopping-cart"></i>
-                        </button>
-                    </form>
+                    <form action="/api/v1/carts/${cartId}/products/${prod._id}" method="POST" class="add-to-cart-form">
+                    <button type="submit" class="action__btn cart__btn" aria-label="Añadir al carrito">
+                        <i class="fi fi-rr-shopping-cart"></i>
+                    </button>
+                </form>
                 </div>
             </div>
         `;
@@ -123,10 +136,3 @@ function renderPagination(pagination) {
         });
     });
 }
-
-socket.emit("getPaginatedProducts", {
-    page: currentPage,
-    limit,
-    sort,
-    query,
-});

@@ -9,49 +9,38 @@
     <table width="100%">
         <thead>
             <tr>
-                <td>Remove</td>
-                <td>Image</td>
-                <td>Product</td>
-                <td>Price</td>
+                <td>Quitar</td>
+                <td>Imagen</td>
+                <td>Producto</td>
+                <td>Precio</td>
+                <td>Comprar</td>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <a href="#">
-                        <i class="far fa-times-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <img src="/assets/img/products/f1.jpg" alt="">
-                </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#">
-                        <i class="far fa-times-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <img src="/assets/img/products/f2.jpg" alt="">
-                </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#">
-                        <i class="far fa-times-circle"></i>
-                    </a>
-                </td>
-                <td>
-                    <img src="/assets/img/products/f3.jpg" alt="">
-                </td>
-                <td>Cartoon Astronaut T-Shirts</td>
-                <td>$118.19</td>
-            </tr>
-        </tbody>
+        {{#each wish.products}}
+        <tr>
+            <td>
+                <a href="#">
+                    <i class="far fa-times-circle" style="color: red;"></i>
+                </a>
+            </td>
+            <td>
+                <img src="{{this.product.image}}" alt="">
+            </td>
+            <td>{{this.product.title}}</td>
+            <td>${{this.product.price}}</td>
+            <td><button class="btn">Agregar al carrito</button></td>
+        </tr>
+
+        {{/each}}
     </table>
+
+    <div class="cart__actions">
+        <a href="#" class="btn flex btn--md btn--empty-cart" aria-label="Vaciar todos los productos del carrito">
+            <i class="fi fi-rr-trash"></i> Vaciar Favoritos
+        </a>
+
+        <a href="/tienda" class="btn flex btn--md" aria-label="Continuar comprando en la tienda">
+            <i class="fi fi-rr-basket-shopping-simple"></i> Ir a la tienda
+        </a>
+    </div>
 </section>

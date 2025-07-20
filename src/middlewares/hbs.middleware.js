@@ -21,6 +21,16 @@ module.exports = (app) => {
         formatDate: (date) => {
             return moment(date).format("dddd, D [de] MMMM [de] YYYY");
         },
+
+        cartSubtotal: (products) => {
+            if (!Array.isArray(products)) return "0.00";
+            const subtotal = products.reduce((total, item) => {
+                const price = item?.product?.price || 0;
+                const quantity = item?.quantity || 0;
+                return total + price * quantity;
+            }, 0);
+            return subtotal.toFixed(2);
+        },
     };
 
     app.engine(

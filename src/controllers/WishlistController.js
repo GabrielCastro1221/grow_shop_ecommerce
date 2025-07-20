@@ -7,10 +7,7 @@ class WishlistController {
 
         try {
             const updatedWishlist = await WishlistRepository.addProductInWish(wishlistId, productId);
-            res.status(201).json({
-                message: "Producto agregado a la wishlist",
-                wishlist: updatedWishlist,
-            });
+            res.redirect(`/wishlist/${wishlistId}`);
         } catch (error) {
             res.status(400).json({ message: error.message });
         }

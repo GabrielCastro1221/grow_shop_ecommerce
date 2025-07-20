@@ -2,6 +2,8 @@ const { logger } = require('../middlewares/logger.middleware');
 const ProductRepository = require("../repositories/ProductRepository");
 const UserRepository = require("../repositories/UserRepository");
 const TicketRepository = require("../repositories/TicketRepository");
+const CartRepository = require("../repositories/CartRepository");
+const WishRepository = require("../repositories/WishlistRepository");
 
 class ViewsController {
     renderIndex(req, res) {
@@ -81,18 +83,27 @@ class ViewsController {
         }
     }
 
-    renderCart(req, res) {
+    async renderCart(req, res) {
         try {
-            res.render('cart');
+            const cartId = req.params.id;
+            const cart = await CartRepository.getCartById(cartId);
+            if (!cart) {
+                return res.redirect("/page-not-found");
+            }
+            res.render("cart", { cart });
         } catch (error) {
-            logger.error(`Error occurred while rendering cart view: ${error.message}`);
-            res.status(500).send('Internal Server Error');
+            res.redirect("/page-not-found");
         }
     }
 
-    renderWishlist(req, res) {
+    async renderWishlist(req, res) {
         try {
-            res.render('wishlist');
+            const wishId = req.params.id;
+            const wish = await WishRepository.getWishlistById(wishId);
+            if (!wish) {
+                return res.redirect("/page-not-found");
+            }
+            res.render('wishlist', { wish });
         } catch (error) {
             logger.error(`Error occurred while rendering wishlist view: ${error.message}`);
             res.status(500).send('Internal Server Error');
