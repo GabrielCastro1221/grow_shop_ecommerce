@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         data.shipping.forEach(destino => {
             const option = document.createElement("option");
             option.value = destino.amount;
-            option.textContent = destino.city;
-            option.setAttribute("data-city", destino.city);
+            option.textContent = destino.city_ship;
+            option.setAttribute("data-city", destino.city_ship);
             select.appendChild(option);
         });
     } catch (error) {

@@ -1,0 +1,54 @@
+<h3 class="tab__header title__tab">Categorias <a href="" class="btn btn--sm" id="create-cat">Crear
+        Categoria</a></h3>
+
+<div id="modal-create-cat" class="modal__create-cat">
+    <div class="modal__create-content-cat">
+        <span class="close-create-cat">&times;</span>
+        <div class="register">
+            <form class="form grid" id="register-for">
+                <input type="text" placeholder="Ingresa la categoria" id="category" name="category" class="form__input">
+                <div class="form__btn">
+                    <button class="btn btn--sm">Crear categoria</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="tab__body">
+    <table class="placed__order-table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        {{#each categories}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.category}}</td>
+            <td>
+                <a href="#" class="view__order view__button" data-id="{{_id}}">Ver</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="user-info-mod">
+                Desde el panel de usuarios. Puedes cambiar fácilmente los roles del usuario, puedes
+                eliminar los
+                usuarios y ver las ordenes de compra realizadas por el mismo.
+            </p>
+            <h3>Selecciona una opción:</h3>
+            <div class="buttons-container">
+                <button class="admin__btn"><i class="fi fi-rr-shuffle"></i> Rol Admin</button>
+                <button class="user__btn"><i class="fi fi-rr-shuffle"></i> Rol usuario</button>
+                <button class="delete__btn"><i class="fi fi-rr-trash"></i> Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/profileAdmin/createCat.js"></script>

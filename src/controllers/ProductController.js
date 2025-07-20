@@ -11,17 +11,25 @@ class ProductController {
                 }))
                 : [];
 
-
             const newProd = {
                 ...req.body,
                 image,
                 thumbnails,
             };
 
-            await ProductRepository.createProduct(newProd);
-            res.redirect("/perfil-admin");
+            const createdProduct = await ProductRepository.createProduct(newProd);
+
+            return res.status(201).json({
+                status: "success",
+                message: "Producto creado correctamente",
+                data: createdProduct,
+            });
         } catch (error) {
-            res.render("profileAdmin", { message: "Error al crear producto" });
+            console.error("Error al crear producto:", error.message);
+            return res.status(500).json({
+                status: "error",
+                message: "Error al crear producto",
+            });
         }
     }
 

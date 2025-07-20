@@ -3,7 +3,7 @@ const shippingModel = require("../models/shipping.model");
 class ShippinRepository {
     async createShipping(shippingData) {
         try {
-            const existingshipping = await shippingModel.findOne({ city: shippingData.city });
+            const existingshipping = await shippingModel.findOne({ city_ship: shippingData.city_ship });
             if (existingshipping) {
                 throw new Error("La destino ya existe");
             }

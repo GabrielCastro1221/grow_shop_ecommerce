@@ -5,6 +5,7 @@ const TicketRepository = require("../repositories/TicketRepository");
 const CartRepository = require("../repositories/CartRepository");
 const WishRepository = require("../repositories/WishlistRepository");
 const ShippingRepository = require("../repositories/ShippingRepository");
+const CategoryRepository = require("../repositories/CategoryRepository");
 
 class ViewsController {
     renderIndex(req, res) {
@@ -134,6 +135,7 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
+    
     async renderProfileAdmin(req, res) {
         try {
             const { page = 1, limit = 1000, sort, query, role, gender } = req.query;
@@ -156,6 +158,9 @@ class ViewsController {
                 limit,
             });
 
+            const categories = await CategoryRepository.getCategories();
+            const shipping = await ShippingRepository.getShipping();
+
             if (products.productos.length === 0) {
                 return res.status(404).json({ message: "No se encontraron productos" });
             }
@@ -174,6 +179,8 @@ class ViewsController {
                 role,
                 gender,
                 page,
+                categories,
+                shipping
             });
         } catch (error) {
             logger.error(`Error occurred while rendering profileAdmin view: ${error.message}`);

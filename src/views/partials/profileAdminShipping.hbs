@@ -1,0 +1,59 @@
+<h3 class="tab__header title__tab">Destinos <a href="" class="btn btn--sm" id="create-ship">Crear
+        Destino</a></h3>
+
+<div id="modal-create-ship" class="modal__create-ship">
+    <div class="modal__create-content-ship">
+        <span class="close-create-ship">&times;</span>
+        <div class="register">
+            <form class="form grid" id="register-fo">
+                <input type="text" placeholder="Ingresa el destino" id="city_ship" name="city-ship" class="form__input">
+
+                <input type="number" placeholder="Ingresa el costo de envio" id="amount" name="amount"
+                    class="form__input">
+                <div class="form__btn">
+                    <button class="btn btn--sm">Crear Destino</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="tab__body">
+    <table class="placed__order-table">
+        <tr>
+            <th>ID</th>
+            <th>Ciudad</th>
+            <th>Costo envio</th>
+            <th>Acciones</th>
+        </tr>
+        {{#each shipping}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.city_ship}}</td>
+            <td>{{this.amount}}</td>
+            <td>
+                <a href="#" class="view__order view__button" data-id="{{_id}}">Ver</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="user-info-mod">
+                Desde el panel de usuarios. Puedes cambiar fácilmente los roles del usuario, puedes
+                eliminar los
+                usuarios y ver las ordenes de compra realizadas por el mismo.
+            </p>
+            <h3>Selecciona una opción:</h3>
+            <div class="buttons-container">
+                <button class="admin__btn"><i class="fi fi-rr-shuffle"></i> Rol Admin</button>
+                <button class="user__btn"><i class="fi fi-rr-shuffle"></i> Rol usuario</button>
+                <button class="delete__btn"><i class="fi fi-rr-trash"></i> Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/profileAdmin/createShipping.js"></script>

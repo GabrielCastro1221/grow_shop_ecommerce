@@ -8,19 +8,23 @@
             </p>
 
             <p class="account__tab active__tab" data-target="#users">
-                <i class="fi fi-rr-shopping-bag"></i> Usuarios
+                <i class="fi fi-rr-user"></i> Usuarios
             </p>
 
             <p class="account__tab active__tab" data-target="#products">
-                <i class="fi fi-rr-user"></i> Productos
+                <i class="fi fi-rr-shopping-bag"></i> Productos
+            </p>
+
+            <p class="account__tab active__tab" data-target="#categories">
+                <i class="fi fi-rr-category-alt"></i> Categorias
             </p>
 
             <p class="account__tab active__tab" data-target="#tickets">
-                <i class="fi fi-rr-marker"></i> Tickets
+                <i class="fi fi-rr-ticket"></i> Tickets
             </p>
 
-            <p class="account__tab active__tab" data-target="#address" style="display: none;">
-                <i class="fi fi-rr-marker"></i> Mis Datos
+            <p class="account__tab active__tab" data-target="#shipping">
+                <i class="fi fi-rr-marker"></i> Destinos
             </p>
 
             <p class="account__tab active__tab logout-button">
@@ -36,12 +40,21 @@
             <div class="tab__content" content id="users">
                 {{> profileAdminUsers}}
             </div>
+
             <div class="tab__content" content id="products">
                 {{> profileAdminProducts}}
             </div>
 
+            <div class="tab__content" content id="categories">
+                {{> profileUserCategories}}
+            </div>
+
             <div class="tab__content" content id="tickets">
                 {{> profileAdminTickets}}
+            </div>
+
+            <div class="tab__content" content id="shipping">
+                {{> profileAdminShipping}}
             </div>
         </div>
 </section>

@@ -10,8 +10,7 @@
         <span class="close-create-prod">&times;</span>
         <div class="register">
             <h3>Crear Producto</h3>
-            <form action="/api/v1/products/create" method="POST" enctype="multipart/form-data" class="form grid"
-                id="form">
+            <form enctype="multipart/form-data" class="form grid" id="form">
                 <input type="text" placeholder="Nombre del producto" id="title" name="title" class="form__input">
                 <input type="number" placeholder="Precio del producto" id="price" name="price" class="form__input">
                 <input type="text" placeholder="Descripción" id="description" name="description" class="form__input">
@@ -20,16 +19,7 @@
                 <div class="form flex-between">
                     <label class="label">
                         Categoria:
-                        <select name="category" class="select-field">
-                            <option value="alimento">Alimento</option>
-                            <option value="juguetes">Juguetes</option>
-                            <option value="accesorios">Accesorios</option>
-                            <option value="higiene">Higiene</option>
-                            <option value="seguridad">Seguridad</option>
-                            <option value="transporte">Transporte</option>
-                            <option value="salud">Salud</option>
-                            <option value="tecnologia">Tecnología</option>
-                        </select>
+                        <select name="category" class="select-field"></select>
                     </label>
                     <label class="label">
                         Tipo:
@@ -103,3 +93,6 @@
         </div>
     </div>
 </div>
+
+<script src="/js/profileAdmin/profileAdminProds.js"></script>
+<script src="/js/categories.js"></script>
