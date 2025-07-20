@@ -5,21 +5,20 @@
 
 .login,
 .register {
-    border: 1px solid var(--border-color-alt);
+    border: 1px solid hsl(0, 0%, 84%);
     padding: 2rem;
     border-radius: 0.5rem;
 }
 
 .forgot__text {
-    font-size: var(--small-font-size);
+    font-size: 0.875rem;
 }
-
 .forgot__pass {
-    color: var(--first-color);
+    color: #088178;
 }
 
 .forgot__pass:hover {
-    border-bottom: 0.5px solid var(--first-color);
+    border-bottom: 0.5px solid #088178;
 }
 
 .flex-between {
@@ -30,8 +29,8 @@
 
 .label {
     font-size: 16px;
-    font-weight: var(--weight-500);
-    color: var(--text-color);
+    font-weight: 500;
+    color: vhsl(154, 13%, 32%);
 }
 
 .select-city {
@@ -44,14 +43,14 @@
     font-size: 15px;
     padding: 6px;
     border-radius: 0.3rem;
-    color: var(--text-color);
+    color: vhsl(154, 13%, 32%);
     outline: none;
 }
 
 .success-alert {
-    color: var(--success-color);
-    background-color: var(--success-bg);
-    border: 1px solid var(--success-border);
+    color: hsl(134, 61%, 21%);
+    background-color: hsl(134, 41%, 88%);
+    border: 1px solid  hsl(134, 41%, 83%);
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -60,9 +59,9 @@
 }
 
 .error-message {
-    color: var(--error-color);
-    background-color: var(--error-bg);
-    border: 1px solid var(--error-border);
+    color: hsl(0, 61%, 21%);
+    background-color: hsl(0, 41%, 88%);
+    border: 1px solid hsl(0, 41%, 83%);
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -75,7 +74,7 @@
     font-size: 15px;
     font-weight: 600;
     padding: 12px;
-    color: var(--textcolor);
+    color: hsl(154, 13%, 32%);
     outline: none;
 }
 
@@ -134,8 +133,8 @@
 
 .title__array-option {
     color: var(--text-color);
-    font-size: var(--small-font-size);
-    font-weight: var(--weight-600);
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 

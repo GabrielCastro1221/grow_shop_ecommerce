@@ -19,9 +19,9 @@ class ProductController {
             };
 
             await ProductRepository.createProduct(newProd);
-            res.status(201).json({ message: "Producto creado con éxito", product: newProd });
+            res.redirect("/perfil-admin");
         } catch (error) {
-            res.status(500).send("Error al crear producto");
+            res.render("profileAdmin", { message: "Error al crear producto" });
         }
     }
 

@@ -325,11 +325,11 @@
 .modal__create-prod {
     display: none;
     position: fixed;
-    top: 0;
+    top: 57px;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
 }
@@ -497,6 +497,15 @@
     border-radius: 0.5rem;
 }
 
+.create-prod {
+    background-color: #088178;
+    color: hsl(129, 44%, 94%);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    padding: 15px 30px;
+}
+
 .pay__btn:hover,
 .cancel__btn:hover,
 .process__btn:hover,
@@ -515,6 +524,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination__btn {
+    padding: 5px 10px;
+    background-color: #088178;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.view__order {
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1400px) {

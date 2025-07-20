@@ -5,9 +5,11 @@
 .details__img {
     margin-bottom: 0.5rem;
 }
+
 .image-prod {
     width: 200px;
 }
+
 .details__small-images {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 0.625rem;
@@ -39,6 +41,7 @@
 .dt {
     margin-right: 2.5rem;
 }
+
 .details__price .new__price {
     font-size: 2rem;
 }

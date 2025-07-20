@@ -1,5 +1,5 @@
 const { logger } = require('../middlewares/logger.middleware');
-
+const ProductRepository = require("../repositories/ProductRepository")
 class ViewsController {
     renderIndex(req, res) {
         try {
@@ -73,14 +73,31 @@ class ViewsController {
         }
     }
 
-    renderProfileAdmin(req, res) {
+    async renderProfileAdmin(req, res) {
         try {
-            res.render('profileAdmin');
+            const { page, limit, sort, query } = req.query;
+            const products = await ProductRepository.getPaginatedProducts({
+                page,
+                limit,
+                sort,
+                query,
+            });
+
+            if (products.productos.length === 0) {
+                return res.status(404).json({ message: "No se encontraron productos" });
+            }
+
+            if (req.headers.accept?.includes('application/json')) {
+                return res.json(products);
+            }
+
+            res.render('profileAdmin', { products, limit, sort, query, page });
         } catch (error) {
             logger.error(`Error occurred while rendering profileAdmin view: ${error.message}`);
             res.status(500).send('Internal Server Error');
         }
     }
+
 
     renderPageNotFound(req, res) {
         try {
@@ -126,7 +143,7 @@ class ViewsController {
             res.status(500).send('Internal Server Error');
         }
     }
-    
+
     renderEmailConfirm(req, res) {
         try {
             res.render('emailConfirm');
