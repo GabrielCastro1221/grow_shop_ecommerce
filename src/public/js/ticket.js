@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
                 Toastify({
-                    text: `Compra realizada con éxito 🚀\nCiudad: ${ciudad}\nTicket ID: ${data._id}`,
+                    text: `Orden de compra generada con éxito`,
                     duration: 4500,
                     gravity: "top",
                     position: "center",

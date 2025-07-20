@@ -48,6 +48,18 @@ class TicketController {
         }
     }
 
+    async getTicketById(req, res) {
+        const { id } = req.params;
+        try {
+            const Ticket = await TicketRepository.getTicketById(id);
+            res
+                .status(200)
+                .json({ message: "Ticket", ticket: Ticket });
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
     async deleteTicket(req, res) {
         const { id } = req.params;
         try {

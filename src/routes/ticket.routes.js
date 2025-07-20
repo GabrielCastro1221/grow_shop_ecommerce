@@ -4,6 +4,7 @@ const TicketController = require('../controllers/TicketController');
 const router = Router();
 
 router.post("/cart/:cid/finish-purchase", TicketController.finishPurchase);
+router.get("/:id", TicketController.getTicketById);
 router.delete("/:id", TicketController.deleteTicket);
 router.put("/pay/:id", TicketController.payTicket);
 router.put("/cancel/:id", TicketController.cancelTicket);
