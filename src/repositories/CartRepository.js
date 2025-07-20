@@ -24,13 +24,18 @@ class CartRepository {
 
     async getProductsInCart(cartId) {
         try {
-            const cart = await cartModel.findById(cartId);
+            const cart = await cartModel
+                .findById(cartId)
+                .populate("products.product");
+
             if (!cart) {
                 logger.warning("El carrito no existe");
                 return null;
             }
-            return cart.products;
+
+            return cart;
         } catch (error) {
+            logger.error("Error al obtener los productos del carrito:", error.message);
             throw new Error("Error al obtener los productos del carrito");
         }
     }

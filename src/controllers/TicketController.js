@@ -8,22 +8,26 @@ class TicketController {
     async finishPurchase(req, res) {
         const cartId = req.params.cid;
         const { amount, shipping, subtotal } = req.body;
+
         try {
             const cart = await CartRepository.getProductsInCart(cartId);
             const user = await TicketRepository.findUserByCartId(cartId);
+
             if (!cart || !user) {
-                return res
-                    .status(404)
-                    .json({ error: "Carrito o usuario no encontrado" });
+                console.warn("Carrito o usuario no encontrado");
+                return res.status(404).json({ error: "Carrito o usuario no encontrado" });
             }
-            const productsData = Array.isArray(cart.products)
-                ? cart.products.map((product) => ({
-                    productId: product.product._id,
-                    title: product.product.title,
-                    price: product.product.price,
-                    quantity: product.quantity,
-                }))
-                : [];
+
+            if (!Array.isArray(cart.products)) {
+                throw new Error("El carrito no tiene productos o no fueron poblados correctamente.");
+            }
+            const clonedProducts = JSON.parse(JSON.stringify(cart.products));
+            const productsData = clonedProducts.map((product) => ({
+                productId: product.product._id,
+                title: product.product.title,
+                price: product.product.price,
+                quantity: product.quantity,
+            }));
 
             const ticketData = {
                 code: ticketNumberRandom(),
@@ -42,9 +46,7 @@ class TicketController {
             res.status(201).json({ _id: ticket._id });
         } catch (error) {
             logger.error(error.message);
-            res
-                .status(500)
-                .json({ error: "Error al realizar la compra, intenta nuevamente" });
+            res.status(500).json({ error: "Error al realizar la compra, intenta nuevamente" });
         }
     }
 
