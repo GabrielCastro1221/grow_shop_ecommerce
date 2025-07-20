@@ -11,7 +11,7 @@ class AuthController {
             await userR.createUser(userData);
             await mailer.userRegister(userData);
             await mailer.notifyAdminOnUserRegister(userData.email);
-            res.status(201).json({ message: "Registro exitoso" });
+            res.redirect("/login");
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
